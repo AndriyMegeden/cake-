@@ -1,0 +1,43 @@
+<ion-content [fullscreen]="true">
+  <div class="header_auth">
+    <img src="../../assets/back.svg" (click)="back()">
+    <img src="../../assets/inline_logo.svg">
+    <div class="right_buttons"></div>
+  </div>
+  <div class="wrapper">
+    <h1>{{'REGISTRATION' | translate}}</h1>
+
+    <div class="inputs_block">
+      <div class="input_block">
+        <img class="icon" src="../../assets/mail.svg">
+        <input type="email" [(ngModel)]="data.email" placeholder="Email">
+      </div>
+
+      <div class="input_block">
+        <img class="icon" src="../../assets/password.svg">
+        <input type="text" [(ngModel)]="data.password" [type]="type_password" placeholder="{{'PASSWORD' | translate}}">
+        <img *ngIf="type_password == 'password'" (click)="type_password = 'text'" class="eye" src="../../assets/eye.svg">
+        <img *ngIf="type_password == 'text'" (click)="type_password = 'password'" class="eye" src="../../assets/eye.svg">
+      </div>
+      <div class="input_block">
+        <img class="icon" src="../../assets/password.svg">
+        <input type="text" [(ngModel)]="data.password_again" [type]="type_password_again" placeholder="{{'REPEAT_PASSWORD' | translate}}">
+        <img *ngIf="type_password_again == 'password'" (click)="type_password_again = 'text'" class="eye" src="../../assets/eye.svg">
+        <img *ngIf="type_password_again == 'text'" (click)="type_password_again = 'password'" class="eye" src="../../assets/eye.svg">
+      </div>
+
+    </div>
+
+    <div class="check_block">
+      <img *ngIf="!confirmation" (click)="confirmation = true" src="../../assets/unmark.svg">
+      <img *ngIf="confirmation" (click)="confirmation = false" src="../../assets/mark.svg">
+      <label>{{'READ_AND_CONFIRM' | translate}} <a href="https://api.elvira-cake-app.com/api/term.html" target="_system">{{'USER_AGREEMENT' | translate}}</a></label>
+    </div>
+
+    <button class="ion-activatable ripple-parent large default" (click)="registration()">
+      {{'NEXT' | translate}}
+      <img src="../../assets/next_white.svg">
+      <ion-ripple-effect></ion-ripple-effect>
+    </button>
+  </div>
+</ion-content>

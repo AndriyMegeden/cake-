@@ -1,0 +1,58 @@
+<ion-content [fullscreen]="true">
+  <div class="header_auth">
+    <img src="../../assets/back.svg" (click)="back()">
+    <h3>{{'PROFILE' | translate}}</h3>
+    <img src="../../assets/logout.svg" (click)="logout()">
+  </div>
+
+  <div class="wrapper">
+    <div class="info">
+      <h3>{{profile?.name}}</h3>
+      <p>{{profile?.email}}</p>
+    </div>
+
+    <div class="menu">
+      <div class="menu_item" [routerLink]="['/favorites']">
+        <img src="../../assets/heart.svg"> <span>{{'FAVORITES' | translate}}</span>
+      </div>
+      <div class="menu_item" [routerLink]="['/subscriptions']">
+        <img src="../../assets/pay.jpg"> <span>{{'MY_SUBCRIPTIONS' | translate}}</span>
+      </div>
+      <div class="menu_item" [routerLink]="['/editprofile']">
+        <img src="../../assets/user.svg"> <span>{{'EDIT_PROFILE' | translate}}</span>
+      </div>
+      <div class="menu_item" [routerLink]="['/notifications']">
+        <img src="../../assets/user.svg"> <span>{{'NOTIFICATIONS' | translate}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="socials">
+
+    <div class="socials_block" *ngIf="content.suport_email != '' || content.support_tg != ''">
+      <h4>{{'OUR_SOCIALS' | translate}}</h4>
+      <a class="social_item" target="_system" [href]="content.inst_link" *ngIf="content.inst_link != ''">
+        <img src="../../assets/inst.svg"> <span>Instagram</span>
+      </a>
+      <a class="social_item" target="_system" [href]="content.tg_link" *ngIf="content.tg_link != ''">
+        <img src="../../assets/tg.png"> <span>Telegram</span>
+      </a>
+    </div>
+
+    <div class="socials_block" *ngIf="content.suport_email != '' || content.support_tg != ''">
+      <h4>{{'SUPPORT' | translate}}</h4>
+      <a class="social_item" target="_system" [href]="'mailto:'+content.suport_email" *ngIf="content.suport_email != ''">
+        <img src="../../assets/text.svg"> <span>{{'MAIL' | translate}}</span>
+      </a>
+      <a class="social_item" target="_system" [href]="content.support_tg" *ngIf="content.support_tg != ''">
+        <img src="../../assets/tg.png"> <span>Telegram</span>
+      </a>
+    </div>
+  </div>
+
+  <button class="ion-activatable ripple-parent small dark" (click)="delete()">
+    {{'DELETE_PROFILE' | translate}}
+    <ion-ripple-effect></ion-ripple-effect>
+  </button>
+
+</ion-content>

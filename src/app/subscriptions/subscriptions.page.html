@@ -1,0 +1,110 @@
+<ion-content [fullscreen]="true">
+  <div class="header_auth">
+    <img src="../../assets/back.svg" (click)="back()">
+    <h3>{{'MY_SUBCRIPTIONS' | translate}}</h3>
+    <div class="right_buttons"></div>
+  </div>
+  <div class="wrapper" *ngIf="active">
+    <div class="subscriptions">
+      <p>{{'YOUR_SUBSCRIPTION' | translate}}</p>
+
+      <ng-container *ngFor="let subscription of subscriptions">
+
+        <div class="subcription" *ngIf="subscription.sub_id == active_info.sub_id">
+          <div class="content">
+            <span>{{subscription.name | translate}}</span>
+            <span>{{subscription.price}} грн</span>
+          </div>
+
+          <div class="additional" *ngIf="subscription.term > 1">
+            <img src="../../assets/double_check.svg">
+            <span>{{'1_MONTH' | translate}} - {{subscription.price / subscription.term | number: '1.0-0'}} грн</span>
+          </div>
+        </div>
+
+      </ng-container>
+    </div>
+    <div class="subscriptions">
+      <p>{{'GO_ANOTHER' | translate}}</p>
+
+      <ng-container *ngFor="let subscription of subscriptions">
+
+        <div class="subcription" *ngIf="subscription.sub_id != active_info.sub_id" [ngClass]="{'active': selected == subscription.sub_id}"
+          (click)="selected = subscription.sub_id">
+          <div class="content">
+            <span>{{subscription.name | translate}}</span>
+            <span>{{subscription.price}} грн</span>
+          </div>
+
+          <div class="additional" *ngIf="subscription.term > 1">
+            <img src="../../assets/double_check.svg">
+            <span>{{'1_MONTH' | translate}} - {{subscription.price / subscription.term | number: '1.0-0'}} грн</span>
+          </div>
+        </div>
+
+      </ng-container>
+
+    </div>
+
+    <div class="promos">
+      <div class="promo_item">
+        <img src="../../assets/round_check.svg"> {{'SUBSCRIPTION_PREF_1' | translate}}
+      </div>
+      <div class="promo_item">
+        <img src="../../assets/round_check.svg"> {{'SUBSCRIPTION_PREF_2' | translate}}
+      </div>
+      <div class="promo_item">
+        <img src="../../assets/round_check.svg"> {{'SUBSCRIPTION_PREF_3' | translate}}
+      </div>
+    </div>
+
+    <p class="note">
+      {{'SUBSCRIPTION_NOTE' | translate}}<br><br>
+            {{'NEXT_PAYMENT' | translate}} {{active_info.active | date: 'dd.MM.yyyy'}}
+    </p>
+
+    <button class="ion-activatable ripple-parent large default" (click)="check_buyed()" [disabled]="selected == ''">
+      {{'BUY_SUBSCRIPTION' | translate}}
+      <ion-ripple-effect></ion-ripple-effect>
+    </button>
+  </div>
+
+
+  <div class="wrapper" *ngIf="!active">
+    <div class="subscriptions">
+
+      <div *ngFor="let subscription of subscriptions" class="subcription"
+        [ngClass]="{'active': selected == subscription.sub_id}" (click)="selected = subscription.sub_id">
+        <div class="content">
+          <span>{{subscription.name | translate}}</span>
+          <span>{{subscription.price}} грн</span>
+        </div>
+
+
+        <div class="additional" *ngIf="subscription.term > 1">
+          <img src="../../assets/double_check.svg">
+          <span>{{'1_MONTH' | translate}} - {{subscription.price / subscription.term | number: '1.0-0'}} грн</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="promos">
+      <div class="promo_item">
+        <img src="../../assets/round_check.svg"> {{'SUBSCRIPTION_PREF_1' | translate}}
+      </div>
+      <div class="promo_item">
+        <img src="../../assets/round_check.svg"> {{'SUBSCRIPTION_PREF_2' | translate}}
+      </div>
+      <div class="promo_item">
+        <img src="../../assets/round_check.svg"> {{'SUBSCRIPTION_PREF_3' | translate}}
+      </div>
+    </div>
+
+    <p class="note">{{'SUBSCRIPTION_NOTE' | translate}}</p>
+
+    <button class="ion-activatable ripple-parent large default" (click)="check_buyed()" [disabled]="selected == ''">
+      {{'BUY_SUBSCRIPTION' | translate}}
+      <ion-ripple-effect></ion-ripple-effect>
+    </button>
+  </div>
+</ion-content>

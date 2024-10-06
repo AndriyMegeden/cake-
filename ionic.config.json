@@ -1,0 +1,7 @@
+{
+  "name": "paytest",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

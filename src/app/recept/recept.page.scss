@@ -1,0 +1,179 @@
+.default_recept {
+    .recept_image {
+        width: 100%;
+    }
+
+    .description {
+        padding: 30px 25px 40px 25px;
+        font-weight: 300;
+        font-size: 14px;
+        margin: 0;
+    }
+
+    .ingredients_header:first-child {
+        margin: 0 0 15px 0;
+    }
+
+    .ingredients_header {
+        margin: 40px 0 15px 0;
+    }
+
+    .ingredients {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+
+        .ingredient {
+            display: flex;
+            justify-content: space-between;
+
+            label {
+                font-size: 14px;
+            }
+
+            .name {
+                img {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
+    .action {
+        margin: 30px 0;
+    }
+
+    .grid {
+        margin-bottom: 50px;
+    }
+}
+
+pre,
+p {
+    line-height: 150%;
+    white-space: normal;
+}
+
+.grid .recept_image {
+    width: 130px;
+    height: 130px;
+}
+
+.banner {
+    margin: 20px auto 40px;
+}
+
+swiper-container {
+    width: 100vw;
+    margin-left: -25px;
+    --swiper-pagination-color: #F96815;
+
+    swiper-slide {
+        width: 100% !important;
+        padding: 0 25px;
+
+        img,
+        video {
+            max-width: 100% !important;
+        }
+    }
+}
+
+.recept_locked {
+    width: 100%;
+    height: 180px;
+    background-position: 50% 50%;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .lock {
+        position: absolute;
+        height: 48px;
+        width: 48px;
+    }
+
+    .bg {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+    }
+}
+
+.need_buy {
+
+    .header {
+        position: absolute;
+        padding: 17px;
+
+        img {
+            background: white;
+            padding: 8px;
+            border-radius: 100%;
+        }
+    }
+
+    .recept_image {
+        width: 100%;
+    }
+
+    .wrapper {
+        margin-top: 20px;
+        gap: 25px;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 25px;
+        align-items: center;
+    }
+
+    h2 {
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    a {
+        margin-top: -20px;
+        color: #000;
+        font-size: 14px;
+    }
+
+    button {
+        margin-top: -15px;
+    }
+
+}
+
+.modalImage {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .bg {
+        position: absolute;
+        z-index: 998;
+        background: #000;
+        width: 100%;
+        height: 100%;
+    }
+
+    img.main_image {
+        position: relative;
+        z-index: 999;
+        height: fit-content;
+        width: 100%;
+    }
+
+    img.button {
+        position: absolute;
+        z-index: 1000;
+        right: 25px;
+        top: 25px;
+        background: white;
+        padding: 8px;
+        border-radius: 100%;
+    }
+}

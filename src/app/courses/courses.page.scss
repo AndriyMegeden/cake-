@@ -1,0 +1,20 @@
+.wrapper{
+    gap: 30px;
+    padding: 25px;
+}
+
+.card_course{
+    min-width: 100%;
+
+    img{
+        width: 100%;
+        border-radius: 30px;
+    }
+
+    p {
+        margin: 0;
+        font-size: 18px;
+        color: #606060;
+        text-align: center;
+    }
+}

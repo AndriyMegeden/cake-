@@ -1,0 +1,12 @@
+<ion-content [fullscreen]="true">
+  <img class="app" src="https://api.elvira-cake-app.com/uploads/{{'ABOUT_APP_PHOTO' | translate}}">
+  <div class="wrapper">
+    <h1>{{'ABOUT_APP_TITLE' | translate}}</h1>
+    <p>{{'ABOUT_APP_DESCRIPTION' | translate}}</p>
+    <button class="ion-activatable ripple-parent large default" [routerLink]="['/start']">
+      {{'NEXT' | translate}}
+      <img src="../../assets/next_white.svg">
+      <ion-ripple-effect></ion-ripple-effect>
+    </button>
+  </div>
+</ion-content>

@@ -1,0 +1,28 @@
+.wrapper{
+    margin-top: 25px;
+    gap: 30px;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 25px;
+    align-items: center;
+}
+
+h2{
+    font-weight: 400;
+    font-size: 16px;
+}
+
+a{
+    margin-top: -20px;
+    color: #000;
+    font-size: 14px;
+}
+
+button{
+    margin-top: -15px;
+
+    &[disabled]{
+        background: #f968155e;
+        border: 1px solid #f968155e !important;
+    }
+}

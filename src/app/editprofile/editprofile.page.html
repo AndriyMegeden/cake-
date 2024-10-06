@@ -1,0 +1,51 @@
+<ion-content [fullscreen]="true">
+  <div class="header_auth">
+    <img src="../../assets/back.svg" (click)="back()">
+    <h3>{{'EDIT_PROFILE' | translate}}</h3>
+    <div class="right_buttons"></div>
+  </div>
+  <div class="wrapper">
+    <h2>{{email}}</h2>
+
+    <div class="inputs_block">
+      <div class="input_block">
+        <img class="icon" src="../../assets/user.svg">
+        <input [(ngModel)]="profile.name" type="text" placeholder="{{'NAME' | translate}}">
+      </div>
+      <div class="input_block">
+        <img class="icon" src="../../assets/book.svg">
+        <select [(ngModel)]="language">
+          <option value="ua">{{'UA' | translate}}</option>
+          <option value="ru">{{'RU' | translate}}</option>
+        </select>
+        <img class="eye" src="../../assets/down.svg">
+      </div>
+      <div class="input_block">
+        <img class="icon" src="../../assets/phone.svg">
+        <input [(ngModel)]="profile.phone" type="number" placeholder="{{'PHONE' | translate}}">
+      </div>
+      <div class="input_block">
+        <img class="icon" src="../../assets/mail.svg">
+        <input [(ngModel)]="profile.email" type="text" placeholder="Email">
+      </div>
+
+      <div class="input_block">
+        <img class="icon" src="../../assets/password.svg">
+        <input type="text" [(ngModel)]="passwords.password" [type]="type_password" placeholder="{{'NEW_PASSWORD' | translate}}">
+        <img *ngIf="type_password == 'password'" (click)="type_password = 'text'" class="eye" src="../../assets/eye.svg">
+        <img *ngIf="type_password == 'text'" (click)="type_password = 'password'" class="eye" src="../../assets/eye.svg">
+      </div>
+      <div class="input_block">
+        <img class="icon" src="../../assets/password.svg">
+        <input type="text" [(ngModel)]="passwords.password_again" [type]="type_password_again" placeholder="{{'NEW_REPEAT_PASSWORD' | translate}}">
+        <img *ngIf="type_password_again == 'password'" (click)="type_password_again = 'text'" class="eye" src="../../assets/eye.svg">
+        <img *ngIf="type_password_again == 'text'" (click)="type_password_again = 'password'" class="eye" src="../../assets/eye.svg">
+      </div>
+    </div>
+    <button class="ion-activatable ripple-parent large default" (click)="save()">
+      {{'SAVE' | translate}}
+      <ion-ripple-effect></ion-ripple-effect>
+    </button>
+
+  </div>
+</ion-content>

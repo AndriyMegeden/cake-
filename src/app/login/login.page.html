@@ -1,0 +1,30 @@
+<ion-content [fullscreen]="true">
+  <div class="header_auth">
+    <img src="../../assets/back.svg" (click)="back()">
+    <img src="../../assets/inline_logo.svg">
+    <div class="right_buttons"></div>
+  </div>
+  <div class="wrapper">
+    <h1>{{'LOGIN_TITLE' | translate}}</h1>
+
+    <div class="inputs_block">
+      <div class="input_block">
+        <img class="icon" src="../../assets/mail.svg">
+        <input [(ngModel)]="data.email" type="text" placeholder="Email">
+      </div>
+      <div class="input_block">
+        <img class="icon" src="../../assets/password.svg">
+        <input type="text" [(ngModel)]="data.password" [type]="type_password" placeholder="{{'PASSWORD' | translate}}">
+        <img *ngIf="type_password == 'password'" (click)="type_password = 'text'" class="eye" src="../../assets/eye.svg">
+        <img *ngIf="type_password == 'text'" (click)="type_password = 'password'" class="eye" src="../../assets/eye.svg">
+      </div>
+    </div>
+    <button class="ion-activatable ripple-parent large default" (click)="login()">
+      {{'LOG_IN' | translate}}
+      <img src="../../assets/next_white.svg">
+      <ion-ripple-effect></ion-ripple-effect>
+    </button>
+
+    <a [routerLink]="['/forgot']">{{'FORGOT_PASSWORD_LINK' | translate}}</a>
+  </div>
+</ion-content>

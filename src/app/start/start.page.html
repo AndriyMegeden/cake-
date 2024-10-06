@@ -1,0 +1,24 @@
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+
+    <div class="large_icon_block">
+      <img src="../../assets/logo.png">
+      <h1>YummyYu</h1>
+      <p>{{'WELCOME' | translate}}</p>
+    </div>
+
+    <div class="large_buttons_group">
+      <button class="ion-activatable ripple-parent large light" [routerLink]="['/registration']">
+        {{'REGISTRATION_BTN' | translate}}
+        <img src="../../assets/next_orange.png">
+        <ion-ripple-effect></ion-ripple-effect>
+      </button>
+      <button class="ion-activatable ripple-parent large default" [routerLink]="['/login']">
+        {{'LOGIN_BTN' | translate}}
+        <img src="../../assets/next_white.svg">
+        <ion-ripple-effect></ion-ripple-effect>
+      </button>
+    </div>
+
+  </div>
+</ion-content>

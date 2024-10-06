@@ -1,0 +1,16 @@
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <div class="left_block">
+      <img src="../../assets/back.svg" (click)="back()">
+      <h3>{{'COURSES_FOR_YOU' | translate}}</h3>
+    </div>
+  </div>
+
+  <div class="wrapper">
+      <a class="card_course" [href]="course.url" target="_system" *ngFor="let course of courses">
+        <img src="https://api.elvira-cake-app.com/uploads/{{course.image}}">
+        <p>{{course.text}}</p>
+      </a>
+  </div>
+
+</ion-content>

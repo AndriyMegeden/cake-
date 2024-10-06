@@ -1,0 +1,11 @@
+.wrapper{
+    padding: 25px;
+}
+
+.empty_block{
+    height: calc(100% - 125px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

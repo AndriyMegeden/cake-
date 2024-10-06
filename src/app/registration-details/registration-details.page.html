@@ -1,0 +1,26 @@
+<ion-content [fullscreen]="true">
+  <div class="header_auth">
+    <img src="../../assets/back.svg" (click)="back()">
+    <img src="../../assets/inline_logo.svg">
+    <div class="right_buttons"></div>
+  </div>
+  <div class="wrapper">
+    <h1>{{'REGISTRATION' | translate}}</h1>
+
+    <div class="inputs_block">
+      <div class="input_block">
+        <img class="icon" src="../../assets/user.svg">
+        <input type="text" [(ngModel)]="data.name" placeholder="{{'NAME' | translate}}">
+      </div>
+      <div class="input_block">
+        <img class="icon" src="../../assets/phone.svg">
+        <input type="phone" [(ngModel)]="data.phone" placeholder="{{'PHONE' | translate}}"> <!--  [inputMask]="phoneMask"  -->
+      </div>
+    </div>
+    <button class="ion-activatable ripple-parent large default" (click)="registration()">
+      {{'NEXT' | translate}}
+      <img src="../../assets/next_white.svg">
+      <ion-ripple-effect></ion-ripple-effect>
+    </button>
+  </div>
+</ion-content>

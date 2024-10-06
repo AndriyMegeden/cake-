@@ -1,0 +1,22 @@
+<ion-content [fullscreen]="true">
+  <div class="header_auth">
+    <img src="../../assets/back.svg" (click)="back()">
+    <img src="../../assets/inline_logo.svg">
+    <div class="right_buttons"></div>
+  </div>
+  <div class="wrapper">
+    <h1>{{'RECOVERING_PASSWORD' | translate}}</h1>
+
+    <div class="inputs_block">
+      <div class="input_block">
+        <img class="icon" src="../../assets/mail.svg">
+        <input [(ngModel)]="data.email" type="text" placeholder="Email">
+      </div>
+    </div>
+    <button class="ion-activatable ripple-parent large default" (click)="login()">
+      {{'RECOVER_PASSWORD' | translate}}
+      <img src="../../assets/next_white.svg">
+      <ion-ripple-effect></ion-ripple-effect>
+    </button>
+  </div>
+</ion-content>

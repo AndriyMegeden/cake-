@@ -1,0 +1,229 @@
+<ion-content [fullscreen]="true">
+<!--
+  <div class="default_recept" *ngIf="loaded && recept.access && false">
+    <div class="header">
+      <div class="left_block">
+        <img src="../../assets/back.svg" (click)="back()">
+        <h3>{{recept.name}}</h3>
+      </div>
+
+      <div class="right_block">
+        <img *ngIf="!recept.favorite" (click)="add_favorite()" src="../../assets/favorite.svg">
+        <img *ngIf="recept.favorite" (click)="remove_favorite()" src="../../assets/favorite_active.svg">
+      </div>
+    </div>
+    <img class="recept_image" src="https://api.elvira-cake-app.com/uploads/{{recept?.image}}" (click)="image = recept?.image">
+    <p class="description" [innerHTML]="recept.shortDescription"></p>
+    <div class="banner" *ngIf="banner" (click)="clickBanner()">
+      <ng-container *ngIf="banner?.target_recept_id > 0">
+        <img class="banner_image" src="https://api.elvira-cake-app.com/uploads/{{banner?.target_recept?.image}}">
+        <div class="content">
+          <h2>{{banner?.target_recept?.name}}</h2>
+          <button class="ion-activatable ripple-parent small dark">
+            {{'OPEN' | translate}}
+            <img src="../../assets/next_white.svg">
+            <ion-ripple-effect></ion-ripple-effect>
+          </button>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="banner?.target_recept_id == 0">
+        <img class="banner_image" src="https://api.elvira-cake-app.com/uploads/{{banner?.image}}">
+        <div class="content">
+          <h2>{{banner?.text}}</h2>
+          <a class="ion-activatable ripple-parent small dark" target="_system">
+            {{'OPEN' | translate}}
+            <img src="../../assets/next_white.svg">
+            <ion-ripple-effect></ion-ripple-effect>
+          </a>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="wrapper  mb-40">
+
+      <h3 class="ingredients_header">{{'INGREDIENTS' | translate}}</h3>
+      <div class="ingredients">
+
+
+        <ng-container *ngFor="let ingredient of recept?.ingredients.ua">
+          <div class="ingredient" *ngIf="ingredient != ''">
+            <label class="name"> <img src="../../assets/orange_point.svg"> <span [innerHTML]="ingredient"></span>
+            </label>
+          </div>
+        </ng-container>
+
+      </div>
+
+
+      <h3 class="ingredients_header">{{'COOKING' | translate}}</h3>
+
+      <ng-container *ngFor="let step of recept.steps">
+
+        <h4>{{step.name.ua}}</h4>
+
+        <h6>{{'INGREDIENTS' | translate}}</h6>
+        <div class="ingredients">
+          <ng-container *ngFor="let ingredient of step.ingredients.ua">
+            <div class="ingredient" *ngIf="ingredient != ''">
+              <label class="name"> <img src="../../assets/orange_point.svg"> <span [innerHTML]="ingredient"></span>
+              </label>
+              <label class="value">66 гр</label>
+            </div>
+          </ng-container>
+        </div>
+
+        <h6>{{'COOKING_METHOD' | translate}}</h6>
+
+        <div class="ingredients">
+          <pre [innerHTML]="step.ua"></pre>
+        </div>
+
+        <swiper-container [pagination]="true">
+          <swiper-slide *ngFor="let photo of step.photos">
+            <img *ngIf="photo.indexOf('.jpg') > -1 || photo.indexOf('.jpeg') > -1 || photo.indexOf('.png') > -1"
+              class="action" src="https://api.elvira-cake-app.com/uploads/{{photo}}" (click)="image = photo">
+
+              <video  *ngIf="photo.indexOf('.mp4') > -1" controls id="videopreview" preload="metadata"  poster="https://www.tlbx.app/1000-700.svg">
+                <source src="https://api.elvira-cake-app.com/uploads/{{photo}}" type="video/mp4">
+            </video>
+          </swiper-slide>
+        </swiper-container>
+      </ng-container>
+    </div>
+
+    <div class="wrapper" *ngIf="recept.same.length">
+      <h3 class="ingredients_header mt-0">{{'SAME_RECEPTS' | translate}}</h3>
+      <div class="grid">
+        <div class="card_recept" *ngFor="let recept of recept.same" [routerLink]="['/recept/', recept.id]">
+          <div class="recept_image" style="background-image: url('https://api.elvira-cake-app.com/uploads/{{recept?.image}}');">
+            <ng-container *ngIf="!recept.access">
+              <div class="bg"></div>
+              <img class="lock" src="../../assets/lock.png">
+            </ng-container>
+          </div>
+          <p>{{recept.name}}</p>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="default_recept" *ngIf="loaded && recept.access">
+    <div class="header">
+      <div class="left_block">
+        <img src="../../assets/back.svg" (click)="back()">
+        <h3>{{recept.name}}</h3>
+      </div>
+
+      <div class="right_block">
+        <img *ngIf="!recept.favorite" (click)="add_favorite()" src="../../assets/favorite.svg">
+        <img *ngIf="recept.favorite" (click)="remove_favorite()" src="../../assets/favorite_active.svg">
+      </div>
+    </div>
+    <img class="recept_image" src="https://api.elvira-cake-app.com/uploads/{{recept?.image}}" (click)="image = recept?.image">
+    <!-- <p class="description" [innerHTML]="recept.shortDescription"></p> -->
+    <div class="banner" *ngIf="banner" (click)="clickBanner()">
+      <ng-container *ngIf="banner?.target_recept_id > 0">
+        <img class="banner_image" src="https://api.elvira-cake-app.com/uploads/{{banner?.target_recept?.image}}">
+        <div class="content">
+          <h2>{{banner?.target_recept?.name}}</h2>
+          <button class="ion-activatable ripple-parent small dark">
+            {{'OPEN' | translate}}
+            <img src="../../assets/next_white.svg">
+            <ion-ripple-effect></ion-ripple-effect>
+          </button>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="banner?.target_recept_id == 0">
+        <img class="banner_image" src="https://api.elvira-cake-app.com/uploads/{{banner?.image}}">
+        <div class="content">
+          <h2>{{banner?.text}}</h2>
+          <a class="ion-activatable ripple-parent small dark" target="_system">
+            {{'OPEN' | translate}}
+            <img src="../../assets/next_white.svg">
+            <ion-ripple-effect></ion-ripple-effect>
+          </a>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="wrapper  mb-40">
+      <div [innerHTML]="recept.content"></div>
+    </div>
+
+    <div class="wrapper" *ngIf="recept.same.length">
+      <h3 class="ingredients_header mt-0">{{'SAME_RECEPTS' | translate}}</h3>
+      <div class="grid">
+        <div class="card_recept" *ngFor="let recept of recept.same" [routerLink]="['/recept/', recept.id]">
+          <div class="recept_image" style="background-image: url('https://api.elvira-cake-app.com/uploads/{{recept?.image}}');">
+            <ng-container *ngIf="!recept.access">
+              <div class="bg"></div>
+              <img class="lock" src="../../assets/lock.png">
+            </ng-container>
+          </div>
+          <p>{{recept.name}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="need_buy" *ngIf="loaded && !recept.access">
+    <div class="header">
+      <div class="left_block">
+        <img src="../../assets/back.svg" (click)="back()">
+      </div>
+    </div>
+    <div class="recept_locked" style="background-image: url('https://api.elvira-cake-app.com/uploads/{{recept?.image}}');">
+      <div class="bg"></div>
+      <img class="lock" src="../../assets/lock.png">
+    </div>
+
+
+    <div class="wrapper">
+
+      <div class="subscriptions">
+        <p>{{'RECEPT_IS_PREMIUM' | translate}}</p>
+        <div *ngFor="let subscription of subscriptions" class="subcription"
+          [ngClass]="{'active': selected == subscription.sub_id}" (click)="selected = subscription.sub_id">
+          <div class="content">
+            <span>{{subscription.name | translate}}</span>
+            <span>{{subscription.price}} грн</span>
+          </div>
+
+
+          <div class="additional" *ngIf="subscription.term > 1">
+            <img src="../../assets/double_check.svg">
+            <span>{{'1_MONTH' | translate}} - {{subscription.price / subscription.term | number: '1.0-0'}} грн</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="promos">
+        <div class="promo_item">
+          <img src="../../assets/round_check.svg"> {{'SUBSCRIPTION_PREF_1' | translate}}
+        </div>
+        <div class="promo_item">
+          <img src="../../assets/round_check.svg"> {{'SUBSCRIPTION_PREF_2' | translate}}
+        </div>
+        <div class="promo_item">
+          <img src="../../assets/round_check.svg"> {{'SUBSCRIPTION_PREF_3' | translate}}
+        </div>
+      </div>
+
+      <p class="note">{{'SUBSCRIPTION_NOTE' | translate}}</p>
+
+      <button class="ion-activatable ripple-parent large default" (click)="check_buyed()">
+        {{'BUY_SUBSCRIPTION' | translate}}
+        <ion-ripple-effect></ion-ripple-effect>
+      </button>
+    </div>
+
+  </div>
+
+
+</ion-content>
+
+<div class="modalImage" *ngIf="image">
+  <div class="bg"></div>
+  <img class="main_image" src="https://api.elvira-cake-app.com/uploads/{{image}}">
+  <img src="../../assets/close.svg" class="button" (click)="image = null">
+</div>
