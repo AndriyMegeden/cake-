@@ -60,8 +60,8 @@ export class HomePage {
     });
   }
 
-  ionViewWillEnter() {
-
+  async ionViewWillEnter() {
+    await this.generalService.loaderStart(); 
     this.getProfile();
 
     this.generalService.get('categories_recepts').then(async res => {

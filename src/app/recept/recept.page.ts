@@ -73,8 +73,7 @@ export class ReceptPage implements OnInit {
   }
 
   async getData() {
-    let loader = await this.loadingCtrl.create();
-    await loader.present();
+    await this.generalService.loaderStart();
     this.generalService.post('recept/' + this.id, { user_id: this.profile.id }).then(async res => {
       res.data.recept.same = JSON.parse(res.data.recept.same);
 
@@ -142,11 +141,7 @@ export class ReceptPage implements OnInit {
       this.recept.content = this.sanitizer.bypassSecurityTrustHtml(this.recept.content);
 
       this.loaded = true;
-
-      await loader.dismiss();
-
     }, async err => {
-      await loader.dismiss();
     })
 
     this.generalService.get('banners').then(async res => {

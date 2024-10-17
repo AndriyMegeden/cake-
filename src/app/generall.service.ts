@@ -273,7 +273,7 @@ export class generalService {
   }
 
   post(path: any, data: any) {
-    this.loaderStart();
+    // this.loaderStart();
     let promise = new Promise<any>((resolve, reject) => {
       let url = this.url + path;
 
@@ -304,7 +304,7 @@ export class generalService {
   }
 
   patch(path: any, data: any) {
-    this.loaderStart();
+    // this.loaderStart();
     let promise = new Promise<any>((resolve, reject) => {
       let url = this.url + path;
 
@@ -337,7 +337,7 @@ export class generalService {
   }
 
   delete(path: any) {
-    this.loaderStart();
+    // this.loaderStart();
     let promise = new Promise<any>((resolve, reject) => {
       let url = this.url + path;
 
