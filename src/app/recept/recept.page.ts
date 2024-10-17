@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController, NavController } from '@ionic/angular';
 import { Swiper } from 'swiper';
@@ -15,7 +15,7 @@ register();
   templateUrl: './recept.page.html',
   styleUrls: ['./recept.page.scss'],
 })
-export class ReceptPage implements OnInit {
+export class ReceptPage  {
 
   subscriptions = [
     {
@@ -76,9 +76,6 @@ export class ReceptPage implements OnInit {
     await this.generalService.loaderStart();
     this.generalService.post('recept/' + this.id, { user_id: this.profile.id }).then(async res => {
       res.data.recept.same = JSON.parse(res.data.recept.same);
-
-      console.log(res.data.recept.content)
-
       for await (let rec of res.data.recept.same) {
         rec.access = true;
         if (rec.premium == 1) rec.access = await this.generalService.checkAccess(rec.created);
@@ -134,11 +131,13 @@ export class ReceptPage implements OnInit {
       res.data.recept.access = true;
       if (res.data.recept.premium == 1) res.data.recept.access = await this.generalService.checkAccess(res.data.recept.created);
 
-      res.data.recept = await this.validateLang(res.data.recept);
+      // res.data.recept = await this.validateLang(res.data.recept);
+      console.log(res.data.recept);
 
       this.recept = res.data.recept;
+      this.recept.name = localStorage.getItem('language') == 'ru' ? this.recept.name_ru : this.recept.name;
       this.recept.content = this.recept.content.replaceAll("<iframe ", "<iframe style='width:100%;' ")
-      this.recept.content = this.sanitizer.bypassSecurityTrustHtml(this.recept.content);
+      this.recept.content = this.sanitizer.bypassSecurityTrustHtml(localStorage.getItem('language') == 'ru' ? this.recept.content_ru : this.recept.content);
 
       this.loaded = true;
     }, async err => {
@@ -167,8 +166,7 @@ export class ReceptPage implements OnInit {
     this.nav.back();
   }
 
-  ngOnInit() {
-  }
+
 
   add_favorite() {
     this.generalService.get('add_favorite/' + this.id + '/' + this.profile.id).then(res => {
