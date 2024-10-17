@@ -53,10 +53,6 @@ export class EditprofilePage implements OnInit {
   }
 
   save() {
-
-    localStorage.setItem('language', this.language);
-    this.translate.setDefaultLang(this.language)
-
     let data: any = {};
 
     if (this.profile.name == '' || this.profile.email == '' || this.profile.phone == '') {
@@ -90,13 +86,22 @@ export class EditprofilePage implements OnInit {
     this.generalService.post('edit_profile', { ...data, ...{ token: localStorage.getItem('token') } }).then(res => {
       localStorage.setItem('profile', JSON.stringify(data));
       this.loadData();
-      
+
       this.generalService.showAlert(this.translate.instant('PROFILE'), this.translate.instant('CHANGES_SAVED'));
     }).catch(err => {
       this.generalService.showError(this.translate.instant(err.error.message));
       return;
     })
 
+  }
+
+  changeLanguage(event){
+    console.log(event);
+
+    this.language = event.target.value;
+    localStorage.setItem('language', this.language);
+    this.translate.setDefaultLang(this.language)
+    this.generalService.showAlert(this.translate.instant('PROFILE'), this.translate.instant('CHANGES_SAVED'));
   }
 
 

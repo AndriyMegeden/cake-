@@ -14,7 +14,7 @@
       </div>
       <div class="input_block">
         <img class="icon" src="../../assets/book.svg">
-        <select [(ngModel)]="language">
+        <select [(ngModel)]="language" (change)="changeLanguage($event)">
           <option value="ua">{{'UA' | translate}}</option>
           <option value="ru">{{'RU' | translate}}</option>
         </select>
