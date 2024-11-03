@@ -47,7 +47,7 @@ export class SubscriptionsPage implements OnInit {
   products: any = [];
   store: any;
 
-  prodId = "io.ionic.cakes.sub2";
+  prodId = "io.ionic.cakes";
   product: any;
   buyStatus = false;
 
