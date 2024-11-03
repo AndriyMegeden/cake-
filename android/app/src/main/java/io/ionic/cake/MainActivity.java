@@ -1,4 +1,4 @@
-package io.ionic.cake;
+package io.ionic.cakes;
 
 import com.getcapacitor.BridgeActivity;
 

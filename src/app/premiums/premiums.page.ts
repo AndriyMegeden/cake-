@@ -19,7 +19,7 @@ export class PremiumsPage implements OnInit {
 
     this.store.verbosity = this.store.DEBUG;
     this.store.register({
-      id: "io.ionic.cake.sub1",
+      id: "io.ionic.cakes.sub1",
       type: this.store.PAID_SUBSCRIPTION,
     });
 
@@ -40,7 +40,7 @@ export class PremiumsPage implements OnInit {
   }
 
   buy(){
-    this.store.order("io.ionic.cake.sub1");
+    this.store.order("io.ionic.cakes.sub1");
   }
 
   back() {

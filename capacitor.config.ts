@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.cake',
+  appId: 'io.ionic.cakes',
   appName: 'Yummy',
   webDir: 'www',
   server: {

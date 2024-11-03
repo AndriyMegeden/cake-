@@ -96,8 +96,6 @@ export class EditprofilePage implements OnInit {
   }
 
   changeLanguage(event){
-    console.log(event);
-
     this.language = event.target.value;
     localStorage.setItem('language', this.language);
     this.translate.setDefaultLang(this.language)

@@ -61,7 +61,7 @@ export class HomePage {
   }
 
   async ionViewWillEnter() {
-    await this.generalService.loaderStart(); 
+    await this.generalService.loaderStart();
     this.getProfile();
 
     this.generalService.get('categories_recepts').then(async res => {
@@ -108,7 +108,8 @@ export class HomePage {
 
     let that = this;
 
-    OneSignal.setAppId("bdfb1480-d9ee-4277-a907-63f39251c764");
+    // OneSignal.setAppId("bdfb1480-d9ee-4277-a907-63f39251c764");
+    OneSignal.setAppId("01185ad3-f8a7-443c-97d7-4e05e09bca7d");
 
     // Prompts the user for notification permissions.
     //    * Since this shows a generic native prompt, we recommend instead using an In-App Message to prompt for notification permission (See step 7) to better communicate to your users what notifications they will get.

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "262319294260",
+    "project_id": "elvira-cake-app",
+    "storage_bucket": "elvira-cake-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:262319294260:android:e04d3f4fa18ba952614761",
+        "android_client_info": {
+          "package_name": "io.ionic.cakes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfolGPlE3wAMUjK2wrQF0fKBLnHGu3uW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

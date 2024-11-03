@@ -33,7 +33,7 @@
     "@ngneat/input-mask": "^6.1.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
-    "cordova-plugin-purchase": "^13.10.1",
+    "cordova-plugin-purchase": "^13.11.1",
     "ionicons": "^7.0.0",
     "moment": "^2.30.1",
     "onesignal-cordova-plugin": "^3.3.1",
