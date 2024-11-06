@@ -7,7 +7,7 @@ android {
         applicationId "io.ionic.cakes"
         minSdkVersion rootProject.ext.minSdkVersion
       targetSdk 34
-      versionCode 11
+      versionCode 24
         versionName '1.0'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {

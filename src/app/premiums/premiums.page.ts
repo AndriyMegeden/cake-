@@ -19,7 +19,7 @@ export class PremiumsPage implements OnInit {
 
     this.store.verbosity = this.store.DEBUG;
     this.store.register({
-      id: "io.ionic.cakes.sub1",
+      id: "io.ionic.cakes",
       type: this.store.PAID_SUBSCRIPTION,
     });
 

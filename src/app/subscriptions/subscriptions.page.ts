@@ -25,19 +25,19 @@ export class SubscriptionsPage implements OnInit {
     {
       name: '1_MONTH',
       sub_id: 'devpro',
-      price: 100,
+      price: 85,
       term: 1
     },
     {
       name: '6_MONTH',
       sub_id: 'plan3',
-      price: 400,
+      price: 425,
       term: 6
     },
     {
       name: '12_MONTH',
       sub_id: 'plan12',
-      price: 1000,
+      price: 765,
       term: 12
     },
   ]
@@ -69,9 +69,9 @@ export class SubscriptionsPage implements OnInit {
     if (Capacitor.isNativePlatform()) {
       this.store = CdvPurchase.store;
       this.store.verbosity = CdvPurchase.LogLevel.DEBUG;
-      if (environment.production) {
-        this.store.verbosity = CdvPurchase.LogLevel.ERROR;
-      }
+      // if (environment.production) {
+      //   this.store.verbosity = CdvPurchase.LogLevel.ERROR;
+      // }
       this.store.error((err: unknown) => {
         console.error('Store Error ' + JSON.stringify(err));
       });
@@ -105,6 +105,9 @@ export class SubscriptionsPage implements OnInit {
       type: CdvPurchase.ProductType.PAID_SUBSCRIPTION,
       platform: CdvPurchase.Platform.GOOGLE_PLAY
     });
+
+    console.log(this.store);
+
   }
 
   registerListeners() {
@@ -135,14 +138,26 @@ export class SubscriptionsPage implements OnInit {
     })
   }
 
-  buy(prod) {
+  buy(prod: string, callback: (success: boolean) => void) {
     const offer = this.store.get(prod)?.getOffer();
     if (offer) {
-      this.store.order(offer).then(() => {
-        //Purchase in progress
-      }, (e: unknown) => {
-        //Purchase error
+      this.store.order(offer).then((result) => {
+        if (result.isError) {
+          alert('Error Result: ' + JSON.stringify(result, null, 2)); // Pretty-print JSON for better readability
+          callback(false);
+        } else {
+          alert('Success Result: ' + JSON.stringify(result, null, 2));
+          callback(true);
+        }
+      }).catch((error) => {
+        // Purchase failed
+        console.error('Purchase error:', error);
+        alert('Purchase error: ' + JSON.stringify(error, null, 2)); // Show error details
+        callback(false);
       });
+    } else {
+      // If no offer is found for the product, mark it as failed
+      callback(false);
     }
   }
 
@@ -168,11 +183,25 @@ export class SubscriptionsPage implements OnInit {
   check_buyed() {
     let time = moment().unix() + '000';
 
-    this.request.post('valid_sub/' + time + '/' + this.selected, { token: localStorage.getItem('token') }).then(res => {
-      this.getProfile();
-      this.selected = '';
-    });
+    // Trigger buy for the selected product
+    if (this.selected) {
+      this.buy(this.selected, (success: boolean) => {
+        if (success) {
+          console.log(success);
+
+          // Only proceed if the purchase was successful
+          this.request.post('valid_sub/' + time + '/' + this.selected, { token: localStorage.getItem('token') }).then(res => {
+            this.getProfile();
+            this.selected = '';
+          });
+        } else {
+          // Handle failure (e.g., show an error message)
+          this.presentAlert('Purchase Failed', 'The purchase could not be completed. Please try again.');
+        }
+      });
+    }
   }
+
 
   getProfile() {
 
